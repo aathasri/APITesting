@@ -86,8 +86,9 @@ const server = http.createServer((req, res) => {
 
 });
 
-// Use host-provided PORT in production; default 3000 locally
+// Use host-provided PORT in production;
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// explicitly listen on 0.0.0.0 so Render can reach it
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
