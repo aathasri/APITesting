@@ -83,7 +83,16 @@ const server = http.createServer((req, res) => {
         });
     }
 
-
+  // Fallback help
+  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+  return res.end(
+    `Try:
+GET ${BASE}/getDate/?name=John
+GET ${BASE}/writeFile/?text=BCIT
+GET ${BASE}/readFile/${FILE_NAME}
+GET ${BASE}/readFile/anyname.txt
+`
+  );
 });
 
 // Use host-provided PORT in production;
